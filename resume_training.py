@@ -36,7 +36,7 @@ if __name__ == '__main__':
     # target = data['target']
     # context = data['context']
     # label = data['label']
-    data_train, data_valid = train_test_split(data, test_size=0.1)
+    data_train, data_valid = train_test_split(data)
     target_train = data_train['target']
     context_train = data_train['context']
     label_train = data_train['label']
@@ -56,7 +56,7 @@ if __name__ == '__main__':
     model = item2vecModel(V, D)
     # optimizer = keras.optimizers.SGD(lr=0.001, momentum=0.9, nesterov=True)
     # model.compile(optimizer=keras.optimizers.SGD(lr=1e-3), loss='binary_crossentropy', metrics=['accuracy'])
-    model.compile(optimizer='rmsprop', loss='binary_crossentropy', metrics=['accuracy'])
+    model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
     # model.compile(optimizer='rmsprop', loss='binary_crossentropy', metrics=['accuracy'])
 
     checkpoint_cb = keras.callbacks.ModelCheckpoint("model_ckp.model")
